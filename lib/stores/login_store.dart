@@ -53,4 +53,11 @@ abstract class _LoginStore with Store {
   @computed
   bool get isFormValid => isEmailValid && isPasswordValid;
 
+  @action
+  void logout(){
+    isLogged = false;
+    email = '';
+    password = '';
+  }
+
 }

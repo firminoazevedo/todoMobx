@@ -24,6 +24,19 @@ mixin _$TodoStore on _TodoStore, Store {
     });
   }
 
+  final _$_TodoStoreActionController = ActionController(name: '_TodoStore');
+
+  @override
+  void changeDone() {
+    final _$actionInfo =
+        _$_TodoStoreActionController.startAction(name: '_TodoStore.changeDone');
+    try {
+      return super.changeDone();
+    } finally {
+      _$_TodoStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
