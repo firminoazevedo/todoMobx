@@ -70,7 +70,7 @@ class _ListScreenState extends State<ListScreen> {
                                     iconData: Icons.add,
                                     onTap: () {
                                       listStore.addTodo();
-                                      _tarefasFieldController.text = '';
+                                      _tarefasFieldController.clear();
                                     },
                                   ),
                           );
@@ -91,12 +91,20 @@ class _ListScreenState extends State<ListScreen> {
                                         title: Text(
                                           todo.title,
                                           style: TextStyle(
-                                            decoration: todo.done ? TextDecoration.lineThrough : null,
+                                              decoration: todo.done
+                                                  ? TextDecoration.lineThrough
+                                                  : null,
                                               color: todo.done
                                                   ? Colors.grey
                                                   : Colors.black),
                                         ),
-                                        onTap: todo.changeDone,
+                                        onTap: () {
+                                          todo.changeDone();
+                                          listStore.todoList.sort((a, b) {
+                                            if (a.done) return 1;
+                                            return -1;
+                                          });
+                                        },
                                       );
                                     },
                                   );
