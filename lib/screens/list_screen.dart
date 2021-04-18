@@ -123,6 +123,7 @@ class _ListScreenState extends State<ListScreen> {
                                         ),
                                         onTap: () {
                                           todo.changeDone();
+                                          listStore.sortList();
                                         },
                                       );
                                     },
