@@ -125,6 +125,9 @@ class _ListScreenState extends State<ListScreen> {
                                           todo.changeDone();
                                           listStore.sortList();
                                         },
+                                        trailing: IconButton(icon: Icon(Icons.delete), onPressed: (){
+                                          listStore.remove('todos', 'id', todo.id, todo);
+                                        }),
                                       );
                                     },
                                   );

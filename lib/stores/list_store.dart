@@ -25,6 +25,10 @@ abstract class _ListStore with Store {
     todoList.addAll(todos);
     sortList();
   }
+  void remove(String table, String where, String id, TodoStore todo){
+    DBUtil.delete(table, where, [id]);
+    todoList.remove(todo);
+  }
 
   void sortList() => todoList.sort((a, b) {
       if (a.done) return 1;
