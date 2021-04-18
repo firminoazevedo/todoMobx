@@ -23,11 +23,13 @@ abstract class _ListStore with Store {
   @action
   void addFromDB(List<TodoStore> todos) {
     todoList.addAll(todos);
-    todoList.sort((a, b) {
+    sortList();
+  }
+
+  void sortList() => todoList.sort((a, b) {
       if (a.done) return 1;
       return -1;
     });
-  }
 
   void addTodo() {
     final todo = TodoStore(newTodoTitle);
