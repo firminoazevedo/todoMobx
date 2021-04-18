@@ -64,11 +64,11 @@ mixin _$ListStore on _ListStore, Store {
   }
 
   @override
-  void addTodo() {
+  void addFromDB(List<TodoStore> todos) {
     final _$actionInfo =
-        _$_ListStoreActionController.startAction(name: '_ListStore.addTodo');
+        _$_ListStoreActionController.startAction(name: '_ListStore.addFromDB');
     try {
-      return super.addTodo();
+      return super.addFromDB(todos);
     } finally {
       _$_ListStoreActionController.endAction(_$actionInfo);
     }

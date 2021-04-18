@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:todomobx/services/db_utils.dart';
 import 'package:todomobx/stores/todo_store.dart';
 part 'list_store.g.dart';
 
@@ -20,8 +21,23 @@ abstract class _ListStore with Store {
   ObservableList<TodoStore> todoList = ObservableList<TodoStore>();
 
   @action
-  void addTodo(){
-    todoList.insert(0, TodoStore(newTodoTitle));
+  void addFromDB(List<TodoStore> todos) {
+    todoList.addAll(todos);
+    todoList.sort((a, b) {
+      if (a.done) return 1;
+      return -1;
+    });
+  }
+
+  void addTodo() {
+    final todo = TodoStore(newTodoTitle);
+    todoList.insert(0, todo);
+    DBUtil.insert('todos', {
+      'id': todo.id,
+      'title': todo.title,
+      'isDone': todo.done ? 1 : 0,
+    });
     newTodoTitle = '';
+    print(todo.id);
   }
 }

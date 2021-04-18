@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:todomobx/services/db_utils.dart';
 import 'package:todomobx/stores/list_store.dart';
 import 'package:todomobx/stores/login_store.dart';
+import 'package:todomobx/stores/todo_store.dart';
 import 'package:todomobx/widgets/custom_icon_button.dart';
 import 'package:todomobx/widgets/custom_text_field.dart';
 
@@ -16,6 +18,22 @@ class ListScreen extends StatefulWidget {
 class _ListScreenState extends State<ListScreen> {
   ListStore listStore = ListStore();
   TextEditingController _tarefasFieldController = TextEditingController();
+
+  Future<void> _loadFromDB() async {
+    var db = await DBUtil.getData('todos');
+    print(db);
+    var todos = db
+        .map((todo) => TodoStore.fromDB(
+            todo['id'], todo['title'], todo['isDone'] == 1 ? true : false))
+        .toList();
+    listStore.addFromDB(todos);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFromDB();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +61,11 @@ class _ListScreenState extends State<ListScreen> {
                       icon: Icon(Icons.exit_to_app),
                       color: Colors.white,
                       onPressed: () {
-                        Provider.of<LoginStore>(context, listen: false).logout();
+                        Provider.of<LoginStore>(context, listen: false)
+                            .logout();
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => LoginScreen()));
+                        setState(() {});
                       },
                     ),
                   ],
@@ -103,10 +123,6 @@ class _ListScreenState extends State<ListScreen> {
                                         ),
                                         onTap: () {
                                           todo.changeDone();
-                                          listStore.todoList.sort((a, b) {
-                                            if (a.done) return 1;
-                                            return -1;
-                                          });
                                         },
                                       );
                                     },
