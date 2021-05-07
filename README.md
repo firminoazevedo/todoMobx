@@ -4,7 +4,7 @@
 
 Aplicativo para listagem de tarefas com design minimalista e interface intuitiva, desenvolvido durante o curso **Criação de Apps Android e iOS com Flutter 2021-Crie 14 Apps** na Udemy.
 
-O objetivo do módulo do curso é ensinar os conceitos sobre o gerenciador de estados Mobx
+O objetivo do app é salvar uma lista de tarefas e marcar as que já estão concluídas.
 
 
 
@@ -30,20 +30,17 @@ Você deve ter instalado Flutter e Dart em sua máquina. Para isso, consulte o g
    - Clone este repositório:
    $ git clone https://github.com/firminoazevedo/todoMobx
 
-   - Enter in directory:
+   - entre no diretório:
    $ cd todoMobx
 
-   - For install dependencies:
+   - Para instalar as dependências:
    $ flutter pub get
 
-   - Run the app: 
+   - Para iniciar o app: 
    $ flutter run
    ```
 
 ---
 
 
-Released in 2021.
-This project is under the [MIT license](https://opensource.org/licenses/MIT).
-
-Coded with :heart: by [Firmino Neto](https://github.com/firminoazevedo) 🚀
+Feito com :heart: por [Firmino Neto](https://github.com/firminoazevedo) 🚀
