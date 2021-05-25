@@ -6,7 +6,22 @@ Aplicativo para listagem de tarefas com design minimalista e interface intuitiva
 
 O objetivo do app é salvar uma lista de tarefas e marcar as que já estão concluídas.
 
+---
 
+## Preview
+
+<p align="center">
+   <img src="./preview/gif_preview.gif" width="200">
+   <img src="./preview/preview_one.jpg" width="200">
+   <img src="./preview/preview_two.jpg" width="200">
+</p>
+
+| Dependencies           | Description                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| auto_size_text: ^2.1.0 | The library automatically scales the texts on the screen preventing it from being overflow |
+| flutter_icons          | add an icon to the app                                       |
+
+---
 
 ## Packages utilizados
 
