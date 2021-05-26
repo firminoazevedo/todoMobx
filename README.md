@@ -8,7 +8,7 @@ O objetivo do app é salvar uma lista de tarefas e marcar as que já estão conc
 
 ---
 
-## Preview
+## Screens
 
 <p align="center">
    <img src="./preview/gif_preview.gif" width="200">
